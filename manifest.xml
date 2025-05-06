@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp
+  xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0"
+  xsi:type="MailApp">
+
+  <Id>00000000-0000-0000-0000-000000000001</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Wervik IT</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Bericht Melden"/>
+  <Description DefaultValue="Meld verdachte e-mails aan IT"/>
+
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+
+  <Requirements>
+    <Sets DefaultMinVersion="1.8">
+      <Set Name="Mailbox" />
+    </Sets>
+  </Requirements>
+
+  <Resources>
+    <bt:Images>
+      <bt:Image id="icon16" DefaultValue="https://ictwervik.github.io/Outlook-plugin/icon16.png"/>
+      <bt:Image id="icon32" DefaultValue="https://ictwervik.github.io/Outlook-plugin/icon32.png"/>
+      <bt:Image id="icon80" DefaultValue="https://ictwervik.github.io/Outlook-plugin/icon80.png"/>
+    </bt:Images>
+    <bt:Urls>
+      <bt:Url id="functionFileUrl" DefaultValue="https://ictwervik.github.io/Outlook-plugin/functions.js"/>
+    </bt:Urls>
+    <bt:ShortStrings>
+      <bt:String id="groupLabel" DefaultValue="IT Beveiliging"/>
+      <bt:String id="buttonLabel" DefaultValue="Bericht Melden"/>
+    </bt:ShortStrings>
+    <bt:LongStrings>
+      <bt:String id="buttonDescription" DefaultValue="Stuur door naar IT en verwijder het bericht."/>
+    </bt:LongStrings>
+  </Resources>
+
+  <FunctionFile resid="functionFileUrl"/>
+
+  <VersionOverrides Version="1.0">
+    <Requirements>
+      <bt:Sets DefaultMinVersion="1.8">
+        <bt:Set Name="Mailbox" />
+      </bt:Sets>
+    </Requirements>
+    <Hosts>
+      <Host xsi:type="MailHost">
+        <ExtensionPoint xsi:type="MessageReadCommandSurface">
+          <OfficeTab id="TabMessage">
+            <Group id="msgReadGroup">
+              <Label resid="groupLabel"/>
+              <Control xsi:type="Button" id="reportButton">
+                <Label resid="buttonLabel"/>
+                <Supertip>
+                  <Title resid="buttonLabel"/>
+                  <Description resid="buttonDescription"/>
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="icon16"/>
+                  <bt:Image size="32" resid="icon32"/>
+                  <bt:Image size="80" resid="icon80"/>
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>reportEmail</FunctionName>
+                </Action>
+              </Control>
+            </Group>
+          </OfficeTab>
+        </ExtensionPoint>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="icon16" DefaultValue="https://ictwervik.github.io/Outlook-plugin/icon16.png"/>
+        <bt:Image id="icon32" DefaultValue="https://ictwervik.github.io/Outlook-plugin/icon32.png"/>
+        <bt:Image id="icon80" DefaultValue="https://ictwervik.github.io/Outlook-plugin/icon80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="functionFileUrl" DefaultValue="https://ictwervik.github.io/Outlook-plugin/functions.js"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="groupLabel" DefaultValue="IT Beveiliging"/>
+        <bt:String id="buttonLabel" DefaultValue="Bericht Melden"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="buttonDescription" DefaultValue="Stuur door naar IT en verwijder het bericht."/>
+      </bt:LongStrings>
+    </Resources>
+    <FunctionFile resid="functionFileUrl"/>
+  </VersionOverrides>
+
+</OfficeApp>
